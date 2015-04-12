@@ -1,20 +1,18 @@
-set nocompatible				" use vim right? 
-filetype on                  	" Enable filetype detection
-filetype indent on				" Enable filetype-specific indenting
-filetype plugin on				" Enable filetype-specific plugins
-
+"==================== Vundle ==================== 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+" Plugins
+Plugin 'gmarik/Vundle.vim' " Vundle is a must
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'scrooloose/nerdcommenter'
 " Plugin 'Lokaltog/vim-powerline'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'bling/vim-airline' 
+" Plugin 'mkitt/tabline.vim' 
+Plugin 'edkolev/tmuxline.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'nathanaelkane/vim-indent-guides'
@@ -27,33 +25,38 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
-
+Plugin 'godlygeek/tabular' 
 " Plugin 'honza/vim-snippets'
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-
-" All of your Plugins must be added before the following line
 call vundle#end()            " required
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
 
-" settings
+"==================== Options ==================== 
+" use vim right? 
+set nocompatible				
+" Enable filetype detection
+filetype on                  	
+" Enable filetype-specific indenting
+filetype indent on				
+" Enable filetype-specific plugins
+filetype plugin on				
 " yank to clipboard
 set clipboard=unnamed
+
+"==================== Appearance ==================== 
+
+set relativenumber " show relative line number
+syntax on
+set t_Co=256
+colorscheme mopkai
+
+"==================== Fixing ==================== 
+
 " fix backspace
 set backspace=indent,eol,start
+" fix shift O delay
+set timeout timeoutlen=315 ttimeoutlen=100
 
-
-" indent
+"==================== Indent ==================== 
 set autoindent "always auto indent
 set tabstop=4 softtabstop=4 shiftwidth=4 "tab length
 set expandtab
@@ -63,29 +66,55 @@ au FileType eruby setl tabstop=2 shiftwidth=2 softtabstop=2 et
 au FileType html setl tabstop=2 shiftwidth=2 softtabstop=2 et
 au FileType css setl tabstop=2 shiftwidth=2 softtabstop=2 et
 
-" powerline
+"==================== Airline ==================== 
 set laststatus=2   " Always show the statusline
 set encoding=utf-8 " Necessary to show Unicode glyphs
+set term=xterm-256color
+set termencoding=utf-8
+let airline_detect_whitespace=0 "disable flailing
+let g:airline_theme='badwolf'
+let g:airline_powerline_fonts=1 
+let g:airline#extensions#tmuxline#enabled=0 "disable tmuxline to let the tmuxline use its own theme
+let g:airline#extensions#tabline#enabled=1
+let g:alrline#extensions#tabline#fnamemod=1 "only show the filaname
 
-" airline
-let airline_detect_whitespace=0
+"==================== Tmuxline ==================== 
+let g:tmuxline_theme = 'powerline'
+let g:tmuxline_powerline_separators=1
+let g:tmuxline_preset = {
+            \'a'    : '#S',
+            \'c'    : ['#(whoami)', '#(uptime | cud -d " " -f 1,2,3)'],
+            \'win'  : ['#I', '#W'],
+            \'cwin' : ['#I', '#W', '#F'],
+            \'x'    : '#(date)',
+            \'z'    : '#H'}
 
+"==================== Key Bindings ==================== 
 " mapleader
 let mapleader=","
 
-" hotkeys
+" NERDTree Toggle
 :map	<F2>	:NERDTreeTabsToggle<CR>
-	" view NERDTree from current open file
+" view NERDTree from current open file
 :map 	<F3> 	:NERDTreeFind<CR> 
-    " toggle indent guides
+" toggle indent guides
 :map    <F5>    :IndentGuidesToggle<CR>
-    " syntastic check
+" syntastic check
 :map    <F9>    :SyntasticCheck<CR>
 
+" tabs
+nmap 	<leader>h	:tabp<CR>
+nmap	<leader>l	:tabn<CR>
+nmap    <leader>tx   :tabclose<CR>    
 
-:map 	<C-h>	:tabp<CR>
-:map	<C-l>	:tabn<CR>
-:map	<C-n>	:tabnew<CR>
+" buffers
+set hidden
+nmap <C-l> :bnext<CR> 
+nmap <C-h> :bprev<CR>
+" Close the current buffer and move to the previous one
+nmap <C-x> :bp <BAR> bd #<CR>   
+" Show all open buffers and their status
+nmap <leader>bl :ls<CR>
 
 " indent in Normal and Visual (using tab and shift-tab)
 :nmap	<tab>	v>
@@ -93,50 +122,47 @@ let mapleader=","
 :vmap	<tab>	v>
 :vmap	<s-tab>	v<
 
-" Nerdtree
-let NERDTreeShowHidden=0
+" PageUp and PageDown for mac
+:map <C-j> <PageDown>
+:map <C-k> <PageUp>
+
+"==================== NERDTree ==================== 
 let NERDTreeShowBookmarks=1
 
-" Appearance
-" set number " show line numbers
-set relativenumber " show relative line number
-syntax on
-set t_Co=256
-colorscheme mopkai
 
-" indent-guide
+"==================== Indent-Guide ==================== 
 let g:indent_guides_enable_on_vim_startup = 1 
 let g:indent_guides_auto_colors = 0 
 let g:indent_guides_guide_size = 1 
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=darkgrey ctermbg=239
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgrey ctermbg=243
 
-" ctrlP
+"==================== CtrlP ==================== 
 let g:ctrlp_cmd = 'CtrlPMRU' " default mru
+let g:ctrlp_by_filename=1  " default to filename mode
 
-" ruby
-	" syntax check
+"==================== Ruby  ==================== 
+" syntax check
 " autocmd FileType ruby map <F9> :w !ruby -c<CR>
-	" execute 
+" execute 
 autocmd FileType ruby map <F10> :!ruby %<CR>
-    " omni complete in ruby
+" omni complete in ruby
 " set omnifunc=syntaxcomplete#Complete
 " let g:rubycomplete_buffer_loading =1
 " let g:rubycomplete_classes_in_global = 1
 " let g:rubycomplete_rails = 1
 
-" rails
-    " this is used for demo
+"==================== Rails ==================== 
+" this is used for demo
 let g:rails_projections = {
-\ "public/test/*.js":{"command":"js"}
-\}
+            \ "public/test/*.js":{"command":"js"}
+            \}
 
-" snipmate
+"==================== Snipmate ==================== 
+" ruby file corresponds to ruby.snippets and rails.snippets
 let g:snipMate = {}
 let g:snipMate.scope_aliases = {}
-    " ruby file corresponds to ruby.snippets and rails.snippets
 let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
 
-" syntastic
+"==================== Syntastic ==================== 
 " let g:syntastic_ruby_checkers = ['rubylint']
-
