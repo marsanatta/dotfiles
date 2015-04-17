@@ -55,7 +55,9 @@ colorscheme mopkai
 " fix backspace
 set backspace=indent,eol,start
 " fix shift O delay
-set timeout timeoutlen=315 ttimeoutlen=100
+set timeout timeoutlen=315 ttimeoutlen=180
+" fix '<,'>
+vmap : :<C-u>
 
 "==================== Indent ==================== 
 set autoindent "always auto indent
@@ -167,3 +169,10 @@ let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
 
 "==================== Syntastic ==================== 
 " let g:syntastic_ruby_checkers = ['rubylint']
+
+
+"==================== Tabular ==================== 
+nmap <Leader>ae :Tabularize /=<CR>
+vmap <Leader>ae :Tabularize /=<CR>
+nmap <Leader>ac :Tabularize /:\zs<CR> 
+vmap <Leader>ac :Tabularize /:\zs<CR>
