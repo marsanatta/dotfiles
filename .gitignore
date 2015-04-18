@@ -3,6 +3,7 @@
 !.bashrc
 !.bash_profile
 !.gitignore
+!.gitconfig
 !.tmux.conf
 !.tmuxline_snapshot
 !/.vim/*

@@ -7,6 +7,7 @@ stty -ixon
 
 
 alias rm='rm -i'
+alias ssh='ssh -X -C'
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -51,7 +52,7 @@ alias rm='rm -i'
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git rails rvm rake)
+plugins=(git rails rvm rake autojump)
 
 # User configuration
 
@@ -59,6 +60,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
+# source /usr/local/share/autojump/autojump.zsh 
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
