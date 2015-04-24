@@ -161,6 +161,12 @@ let g:rails_projections = {
             \ "public/test/*.js":{"command":"js"}
             \}
 
+"==================== Cuda ==================== 
+" syntax highlight for cuda
+au BufNewFile,BufRead *.cu set ft=cuda
+au BufNewFile,BufRead *.cuh set ft=cuda
+
+
 "==================== Snipmate ==================== 
 " ruby file corresponds to ruby.snippets and rails.snippets
 let g:snipMate = {}
