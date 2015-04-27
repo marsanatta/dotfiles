@@ -172,6 +172,7 @@ au BufNewFile,BufRead *.cuh set ft=cuda
 let g:snipMate = {}
 let g:snipMate.scope_aliases = {}
 let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
+let g:snipMate.scope_aliases['cuda'] = 'cuda,cpp'
 
 "==================== Syntastic ==================== 
 " let g:syntastic_ruby_checkers = ['rubylint']
