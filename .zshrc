@@ -5,9 +5,38 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 stty -ixon
 
-
 alias rm='rm -i'
 alias ssh='ssh -X -C'
+
+# =========== Local to Dev ===========
+export CUR_BE="be_news"
+export CUR_BRANCH="unit_test"
+export CUR_REMOTE="origin"
+export TEST_CONTROLLER_DIR="/home/marshall.hung/HomeSecurity_BEs/be_news/spec/controllers"
+export TEST_MODEL_DIR="/home/marshall.hung/HomeSecurity_BEs/be_news/spec/models"
+export TEST_REQUEST_DIR="/home/marshall.hung/HomeSecurity_BEs/be_news/spec/requests"
+
+# alias gacp="gaa; git commit -m '[$CUR_BE][$CUR_BRANCH] revision'; git push $CUR_REMOTE $CUR_BRANCH" 
+gacp() {
+    git add .
+    git commit -m "[$CUR_BE][$CUR_BRANCH] $1"
+    git push $CUR_REMOTE $CUR_BRANCH
+}
+
+# =========== Dev test ==========
+gpct() {
+    git pull $CUR_REMOTE $CUR_BRANCH
+    rspec TEST_CONTROLLER_DIR
+}
+gpmt() {
+    git pull $CUR_REMOTE $CUR_BRANCH
+    rspec TEST_MODEL_DIR
+}
+gprt() {
+    git pull $CUR_REMOTE $CUR_BRANCH
+    rspec TEST_REQUEST_DIR
+}
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
