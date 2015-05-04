@@ -46,6 +46,7 @@ set clipboard=unnamed
 "==================== Appearance ==================== 
 
 set relativenumber " show relative line number
+set nu " show the line number 
 syntax on
 set t_Co=256
 colorscheme mopkai
