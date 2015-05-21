@@ -8,10 +8,8 @@ Plugin 'gmarik/Vundle.vim' " Vundle is a must
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'scrooloose/nerdcommenter'
-" Plugin 'Lokaltog/vim-powerline'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'bling/vim-airline' 
-" Plugin 'mkitt/tabline.vim' 
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'edkolev/promptline.vim' 
 Plugin 'kien/ctrlp.vim'
@@ -27,6 +25,7 @@ Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'godlygeek/tabular' 
+Plugin 'plasticboy/vim-markdown'
 " Plugin 'honza/vim-snippets'
 
 call vundle#end()            " required
@@ -46,6 +45,7 @@ set clipboard=unnamed
 "==================== Appearance ==================== 
 
 set relativenumber " show relative line number
+set nu " show the line number 
 syntax on
 set t_Co=256
 colorscheme mopkai
@@ -102,6 +102,8 @@ let mapleader=","
 :map 	<F3> 	:NERDTreeFind<CR> 
 " toggle indent guides
 :map    <F5>    :IndentGuidesToggle<CR>
+" toggle number
+:map    <F6>    :set nu!<CR>:set relativenumber!<CR>
 " syntastic check
 :map    <F9>    :SyntasticCheck<CR>
 

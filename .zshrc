@@ -1,44 +1,43 @@
+# ========== Environments ==========
 export CUDA_HOME=/usr/local/cuda-7.0 
 export LD_LIBRARY_PATH=${CUDA_HOME}/lib64 
 PATH=${CUDA_HOME}/bin:${PATH} 
 export PATH
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh # Path to your oh-my-zsh installation.
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-[[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+# ========== Problem Fix ===========
 stty -ixon
-
+# ========== Alias ==========
 alias rm='rm -i'
 alias ssh='ssh -X -C'
 alias glg2="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''        %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
-# =========== Local to Dev ===========
-export CUR_BE="be_news"
-export CUR_BRANCH="unit_test"
-export CUR_REMOTE="origin"
-export TEST_CONTROLLER_DIR="/home/marshall.hung/HomeSecurity_BEs/be_news/spec/controllers"
-export TEST_MODEL_DIR="/home/marshall.hung/HomeSecurity_BEs/be_news/spec/models"
-export TEST_REQUEST_DIR="/home/marshall.hung/HomeSecurity_BEs/be_news/spec/requests"
-
-# alias gacp="gaa; git commit -m '[$CUR_BE][$CUR_BRANCH] revision'; git push $CUR_REMOTE $CUR_BRANCH" 
+# =========== Functions ===========
+export TEST_CONTROLLER_DIR="/home/marshall.hung/workspace/HomeSecurity_BEs/be_news/spec/controllers"
+export TEST_MODEL_DIR="/home/marshall.hung/workspace/HomeSecurity_BEs/be_news/spec/models"
+export TEST_REQUEST_DIR="/home/marshall.hung/workspace/HomeSecurity_BEs/be_news/spec/requests"
 gacp() {
     git add .
-    git commit -m "[$CUR_BE][$CUR_BRANCH] $1"
-    git push $CUR_REMOTE $CUR_BRANCH
+    git commit -m "$1"
+    ggpush
 }
-
-# =========== Dev test ==========
 gpct() {
-    git pull $CUR_REMOTE $CUR_BRANCH
+    ggpull
     rspec TEST_CONTROLLER_DIR
 }
 gpmt() {
-    git pull $CUR_REMOTE $CUR_BRANCH
+    ggpull
     rspec TEST_MODEL_DIR
 }
 gprt() {
-    git pull $CUR_REMOTE $CUR_BRANCH
+    ggpull
     rspec TEST_REQUEST_DIR
+}
+ftext() {
+    sudo find . -type f -exec grep "$1" {} +
+}
+ffile() {
+    sudo find . -print | grep -i "$1"
 }
 
 # Set name of the theme to load.
@@ -88,9 +87,6 @@ gprt() {
 plugins=(git rails rvm rake autojump)
 
 # User configuration
-
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-# export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
 # source /usr/local/share/autojump/autojump.zsh 
@@ -325,6 +321,5 @@ else
     PROMPT_COMMAND='__promptline;'$'\n'"$PROMPT_COMMAND"
   fi
 fi
-
 
 source ~/.zsh-git-prompt/zshrc.sh
