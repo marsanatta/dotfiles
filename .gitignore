@@ -7,5 +7,5 @@
 !.tmuxline_snapshot
 !/.vim/*
 !.zshrc
+!/.zsh-git-prompt/
 !.zsh-git-prompt/*
-!.zsh-git-prompt/zshrc.sh
