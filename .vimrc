@@ -185,3 +185,6 @@ nmap <Leader>ae :Tabularize /=<CR>
 vmap <Leader>ae :Tabularize /=<CR>
 nmap <Leader>ac :Tabularize /:\zs<CR> 
 vmap <Leader>ac :Tabularize /:\zs<CR>
+nmap <Leader>aa :Tabularize /=>\zs<CR> 
+vmap <Leader>aa :Tabularize /=>\zs<CR>
+
