@@ -100,6 +100,8 @@ let mapleader=","
 :map	<F2>	:NERDTreeTabsToggle<CR>
 " view NERDTree from current open file
 :map 	<F3> 	:NERDTreeFind<CR> 
+" auto indent and jump back to current line
+:map    <F4>   gg=G<C-o><C-o>
 " toggle indent guides
 :map    <F5>    :IndentGuidesToggle<CR>
 " toggle number
@@ -187,4 +189,3 @@ nmap <Leader>ac :Tabularize /:\zs<CR>
 vmap <Leader>ac :Tabularize /:\zs<CR>
 nmap <Leader>aa :Tabularize /=>\zs<CR> 
 vmap <Leader>aa :Tabularize /=>\zs<CR>
-
