@@ -26,6 +26,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'godlygeek/tabular' 
 Plugin 'plasticboy/vim-markdown'
+Plugin 'pangloss/vim-javascript'
 " Plugin 'honza/vim-snippets'
 
 call vundle#end()            " required
@@ -170,6 +171,9 @@ let g:rails_projections = {
 au BufNewFile,BufRead *.cu set ft=cuda
 au BufNewFile,BufRead *.cuh set ft=cuda
 
+"==================== C++ ==================== 
+" syntastic(syntax check plugin) support for C++11
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 
 "==================== Snipmate ==================== 
 " ruby file corresponds to ruby.snippets and rails.snippets
