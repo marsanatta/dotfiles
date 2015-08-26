@@ -1,4 +1,5 @@
 # ========== Environments ==========
+export DISPLAY=":0"
 export CUDA_HOME=/usr/local/cuda-7.0 
 export LD_LIBRARY_PATH=${CUDA_HOME}/lib64 
 PATH=${CUDA_HOME}/bin:${PATH} 
@@ -117,6 +118,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 #
+
 #
 # This shell prompt config file was created by promptline.vim
 #
@@ -281,21 +283,21 @@ function __promptline {
   local alt_rsep=""
   local reset="${wrap}0${end_wrap}"
   local reset_bg="${wrap}49${end_wrap}"
-  local a_fg="${wrap}38;5;220${end_wrap}"
-  local a_bg="${wrap}48;5;166${end_wrap}"
-  local a_sep_fg="${wrap}38;5;166${end_wrap}"
-  local b_fg="${wrap}38;5;231${end_wrap}"
-  local b_bg="${wrap}48;5;31${end_wrap}"
-  local b_sep_fg="${wrap}38;5;31${end_wrap}"
-  local c_fg="${wrap}38;5;250${end_wrap}"
-  local c_bg="${wrap}48;5;240${end_wrap}"
-  local c_sep_fg="${wrap}38;5;240${end_wrap}"
-  local warn_fg="${wrap}38;5;231${end_wrap}"
-  local warn_bg="${wrap}48;5;52${end_wrap}"
-  local warn_sep_fg="${wrap}38;5;52${end_wrap}"
-  local y_fg="${wrap}38;5;250${end_wrap}"
-  local y_bg="${wrap}48;5;236${end_wrap}"
-  local y_sep_fg="${wrap}38;5;236${end_wrap}"
+  local a_fg="${wrap}38;5;254${end_wrap}"
+  local a_bg="${wrap}48;5;238${end_wrap}"
+  local a_sep_fg="${wrap}38;5;238${end_wrap}"
+  local b_fg="${wrap}38;5;254${end_wrap}"
+  local b_bg="${wrap}48;5;232${end_wrap}"
+  local b_sep_fg="${wrap}38;5;232${end_wrap}"
+  local c_fg="${wrap}38;5;232${end_wrap}"
+  local c_bg="${wrap}48;5;238${end_wrap}"
+  local c_sep_fg="${wrap}38;5;238${end_wrap}"
+  local warn_fg="${wrap}38;5;219${end_wrap}"
+  local warn_bg="${wrap}48;5;89${end_wrap}"
+  local warn_sep_fg="${wrap}38;5;89${end_wrap}"
+  local y_fg="${wrap}38;5;254${end_wrap}"
+  local y_bg="${wrap}48;5;232${end_wrap}"
+  local y_sep_fg="${wrap}38;5;232${end_wrap}"
   if [[ -n ${ZSH_VERSION-} ]]; then
     PROMPT="$(__promptline_left_prompt)"
     RPROMPT="$(__promptline_right_prompt)"

@@ -16,6 +16,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'morhetz/gruvbox'
 Plugin 'scrooloose/syntastic'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
@@ -49,8 +50,14 @@ set relativenumber " show relative line number
 set nu " show the line number 
 syntax on
 set t_Co=256
-colorscheme mopkai
+set background=dark
+if has("gui_running")
+    colorscheme gruvbox
+    set guifont=Droid\ Sans\ Mono\ for\ Powerline:h18
+else
+    colorscheme mopkai
 
+endif
 "==================== Fixing ==================== 
 
 " fix backspace
@@ -69,6 +76,7 @@ au FileType ruby setl tabstop=2 shiftwidth=2 softtabstop=2 et
 au FileType eruby setl tabstop=2 shiftwidth=2 softtabstop=2 et
 au FileType html setl tabstop=2 shiftwidth=2 softtabstop=2 et
 au FileType css setl tabstop=2 shiftwidth=2 softtabstop=2 et
+au FileType php setl tabstop=2 shiftwidth=2 softtabstop=2 et
 
 "==================== Airline ==================== 
 set laststatus=2   " Always show the statusline
