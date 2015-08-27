@@ -1,5 +1,4 @@
 # ========== Environments ==========
-export DISPLAY=":0"
 export CUDA_HOME=/usr/local/cuda-7.0 
 export LD_LIBRARY_PATH=${CUDA_HOME}/lib64 
 PATH=${CUDA_HOME}/bin:${PATH} 
@@ -9,6 +8,7 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 # ========== Problem Fix ===========
 stty -ixon
+export LANG="en_US.UTF-8"
 # ========== Alias ==========
 alias rm='rm -i'
 alias ssh='ssh -X -C'
