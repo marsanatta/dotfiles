@@ -89,6 +89,14 @@ let g:airline_powerline_fonts=1
 let g:airline#extensions#tmuxline#enabled=0 "disable tmuxline to let the tmuxline use its own theme
 let g:airline#extensions#tabline#enabled=1
 let g:alrline#extensions#tabline#fnamemod=1 "only show the filaname
+"==================== Promptline ==================== 
+let g:promptline_preset = {
+        \'a' : [ promptline#slices#host({'only_if_ssh': 1})],
+        \'b' : [ promptline#slices#user()],
+        \'c' : [ promptline#slices#cwd({'dir_limit': 3})],
+        \'warn' : [ promptline#slices#last_exit_code()],
+        \'y' : [ promptline#slices#vcs_branch()],
+        \'z' : [ promptline#slices#git_status()]}
 
 "==================== Tmuxline ==================== 
 let g:tmuxline_theme = 'powerline'

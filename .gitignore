@@ -6,7 +6,7 @@
 !.tmux.conf
 !.tmuxline_snapshot
 !.zshrc
-!.zsh-git-prompt/
-!.zsh-git-prompt/*
-!.zsh-git-prompt/src/
-!.zsh-git-prompt/src/*
+!.promptline_themes/
+!.promptline_themes/*
+!.dotfiles_scripts/
+!.dotfiles_scripts/*
