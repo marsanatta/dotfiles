@@ -16,6 +16,8 @@ sudo apt-get install zsh
 sudo apt-get install autojump
 # oh-my-zsh
 curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+# zsh-syntax-highlighting
+git clone git://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins
 # setup dotfiles
 cp {../.vimrc,../.zshrc,../.gitignore} ~
 # [vim] install plugins
