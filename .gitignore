@@ -10,3 +10,7 @@
 !.promptline_themes/*
 !.dotfiles_scripts/
 !.dotfiles_scripts/*
+!.zsh-git-prompt/
+!.zsh-git-prompt/*
+!.zsh-git-prompt/src/
+!.zsh-git-prompt/src/*

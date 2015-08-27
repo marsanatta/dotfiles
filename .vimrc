@@ -95,8 +95,7 @@ let g:promptline_preset = {
         \'b' : [ promptline#slices#user()],
         \'c' : [ promptline#slices#cwd({'dir_limit': 3})],
         \'warn' : [ promptline#slices#last_exit_code()],
-        \'y' : [ promptline#slices#vcs_branch()],
-        \'z' : [ promptline#slices#git_status()]}
+        \'z' : [ promptline#slices#vcs_branch()]}
 
 "==================== Tmuxline ==================== 
 let g:tmuxline_theme = 'powerline'
