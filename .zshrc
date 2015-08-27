@@ -89,7 +89,7 @@ plugins=(git rails rvm rake autojump)
 
 # User configuration
 
-source ~/.promptline_goldenline.sh
+source ~/.promptline_themes/promptline_goldenline.sh
 source $ZSH/oh-my-zsh.sh
 # source /usr/local/share/autojump/autojump.zsh 
 
