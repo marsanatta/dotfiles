@@ -8,6 +8,8 @@
 !.zshrc
 !.promptline_themes/
 !.promptline_themes/*
+!.tmuxline_themes/
+!.tmuxline_themes/*
 !.dotfiles_scripts/
 !.dotfiles_scripts/*
 !.zsh-git-prompt/
