@@ -84,7 +84,7 @@ set encoding=utf-8 " Necessary to show Unicode glyphs
 set term=xterm-256color
 set termencoding=utf-8
 let airline_detect_whitespace=0 "disable flailing
-let g:airline_theme='murmur'
+let g:airline_theme='simple'
 let g:airline_powerline_fonts=1 
 let g:airline#extensions#tmuxline#enabled=0 "disable tmuxline to let the tmuxline use its own theme
 let g:airline#extensions#tabline#enabled=1
@@ -157,8 +157,10 @@ let NERDTreeShowBookmarks=1
 let g:indent_guides_enable_on_vim_startup = 1 
 let g:indent_guides_auto_colors = 0 
 let g:indent_guides_guide_size = 1 
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=darkgrey ctermbg=239
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgrey ctermbg=243
+if !has("gui_running") " since Indent Guide automatically choose colors for gVim/MacVim
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=darkgrey ctermbg=235
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgrey ctermbg=238
+endif
 
 "==================== CtrlP ==================== 
 let g:ctrlp_cmd = 'CtrlPMRU' " default mru
