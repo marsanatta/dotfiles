@@ -55,7 +55,8 @@ if has("gui_running")
     colorscheme gruvbox
     set guifont=Droid\ Sans\ Mono\ for\ Powerline:h18
 else
-    colorscheme mopkai
+    "colorscheme mopkai
+    colorscheme molokai
 
 endif
 "==================== Fixing ==================== 
@@ -83,12 +84,12 @@ set laststatus=2   " Always show the statusline
 set encoding=utf-8 " Necessary to show Unicode glyphs
 set term=xterm-256color
 set termencoding=utf-8
-let airline_detect_whitespace=0 "disable flailing
 let g:airline_theme='simple'
 let g:airline_powerline_fonts=1 
 let g:airline#extensions#tmuxline#enabled=0 "disable tmuxline to let the tmuxline use its own theme
 let g:airline#extensions#tabline#enabled=1
 let g:alrline#extensions#tabline#fnamemod=1 "only show the filaname
+let g:airline#extensions#whitespace#enabled=0 "disable whitespace trailing detection
 "==================== Promptline ==================== 
 let g:promptline_preset = {
         \'a' : [ promptline#slices#host({'only_if_ssh': 1})],
@@ -128,14 +129,14 @@ let mapleader=","
 " tabs
 nmap 	<leader>h	:tabp<CR>
 nmap	<leader>l	:tabn<CR>
-nmap    <leader>tx   :tabclose<CR>    
+nmap    <leader>tx   :tabclose<CR>
 
 " buffers
 set hidden
-nmap <C-l> :bnext<CR> 
+nmap <C-l> :bnext<CR>
 nmap <C-h> :bprev<CR>
 " Close the current buffer and move to the previous one
-nmap <C-x> :bp <BAR> bd #<CR>   
+nmap <C-x> :bp <BAR> bd #<CR>
 " Show all open buffers and their status
 nmap <leader>bl :ls<CR>
 
@@ -149,11 +150,11 @@ nmap <leader>bl :ls<CR>
 :map <C-j> <PageDown>
 :map <C-k> <PageUp>
 
-"==================== NERDTree ==================== 
+"==================== NERDTree ====================
 let NERDTreeShowBookmarks=1
 
 
-"==================== Indent-Guide ==================== 
+"==================== Indent-Guide ====================
 let g:indent_guides_enable_on_vim_startup = 1 
 let g:indent_guides_auto_colors = 0 
 let g:indent_guides_guide_size = 1 
