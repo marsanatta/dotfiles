@@ -29,6 +29,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'pangloss/vim-javascript'
 " Plugin 'honza/vim-snippets'
+Plugin 'jiangmiao/auto-pairs'
 
 call vundle#end()            " required
 
