@@ -1,19 +1,19 @@
 #!/bin/zsh
 
 #
-# setup vim ,zsh and other plugins from scratch
+# setup vim ,zsh and other plugins from scratch for working
 #
 
 # vim
-sudo add-apt-repository ppa:fcwu-tw/ppa # for Vim 7.4
-sudo apt-get update
-sudo apt-get install vim
+sudo yum install vim # for updating Vim to 7.4
 # Vundle
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 # zsh  
-sudo apt-get install zsh
-# autojump
-sudo apt-get install autojump
+sudo yum install zsh
+# autojump for RHEL 6 64bit
+wget http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpma 
+sudo rpm -ivh epel-release-6-8.noarch.rpm
+sudo yum install autojump-zsh
 # oh-my-zsh
 curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 # zsh-syntax-highlighting
