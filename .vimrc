@@ -27,9 +27,11 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'godlygeek/tabular' 
 Plugin 'plasticboy/vim-markdown'
-Plugin 'pangloss/vim-javascript'
-" Plugin 'honza/vim-snippets'
+"Plugin 'pangloss/vim-javascript'
+"Plugin 'honza/vim-snippets'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'StanAngeloff/php.vim'
+Plugin 'othree/html5.vim'
 
 call vundle#end()            " required
 
@@ -78,7 +80,8 @@ au FileType ruby setl tabstop=2 shiftwidth=2 softtabstop=2 et
 au FileType eruby setl tabstop=2 shiftwidth=2 softtabstop=2 et
 au FileType html setl tabstop=2 shiftwidth=2 softtabstop=2 et
 au FileType css setl tabstop=2 shiftwidth=2 softtabstop=2 et
-au FileType php setl tabstop=2 shiftwidth=2 softtabstop=2 et
+au FileType php setl tabstop=4 shiftwidth=4 softtabstop=4 et
+au FileType yaml setl tabstop=2 shiftwidth=2 softtabstop=2 et
 
 "==================== Airline ==================== 
 set laststatus=2   " Always show the statusline
@@ -203,6 +206,7 @@ let g:snipMate.scope_aliases['cuda'] = 'cuda,cpp'
 
 "==================== Syntastic ==================== 
 " let g:syntastic_ruby_checkers = ['rubylint']
+let g:syntastic_php_checkers = ['phplint']
 
 
 "==================== Tabular ==================== 
@@ -212,3 +216,7 @@ nmap <Leader>ac :Tabularize /:\zs<CR>
 vmap <Leader>ac :Tabularize /:\zs<CR>
 nmap <Leader>aa :Tabularize /=>\zs<CR> 
 vmap <Leader>aa :Tabularize /=>\zs<CR>
+
+"==================== Auto-Paris ==================== 
+let g:AutoPairsMapBS=0
+
