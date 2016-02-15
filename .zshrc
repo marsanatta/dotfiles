@@ -1,4 +1,5 @@
 # ========== Environments ==========
+export TERM=xterm-256color
 export CUDA_HOME=/usr/local/cuda-7.0 
 export LD_LIBRARY_PATH=${CUDA_HOME}/lib64 
 PATH=${CUDA_HOME}/bin:${PATH} 
@@ -12,7 +13,8 @@ export LANG="en_US.UTF-8"
 # ========== Alias ==========
 alias rm='rm -i'
 alias vim='sudo -E vim'
-alias ryml='sudo /home/y/bin64/ycbDbAdmin -c CLEANUP'
+alias rycb='sudo /home/y/bin64/ycbDbAdmin -c CLEANUP'
+alias ryrb='sudo /home/y/bin64/yrbDbAdmin -c CLEANUP'
 alias rapache='yinst restart yapache'
 alias catsc='sh ~/catsc.sh'
 alias lcache="logcat -f  /home/y/logs/trafficserver/squid.blog"
@@ -20,26 +22,6 @@ alias aerr='sudo tail -f /home/y/logs/yapache/error'
 alias ssh='ssh -X -C'
 alias glg2="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''        %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
 # =========== Functions ===========
-export TEST_CONTROLLER_DIR="/home/marshall.hung/workspace/HomeSecurity_BEs/be_news/spec/controllers"
-export TEST_MODEL_DIR="/home/marshall.hung/workspace/HomeSecurity_BEs/be_news/spec/models"
-export TEST_REQUEST_DIR="/home/marshall.hung/workspace/HomeSecurity_BEs/be_news/spec/requests"
-gacp() {
-    git add .
-    git commit -m "$1"
-    ggpush
-}
-gpct() {
-    ggpull
-    rspec TEST_CONTROLLER_DIR
-}
-gpmt() {
-    ggpull
-    rspec TEST_MODEL_DIR
-}
-gprt() {
-    ggpull
-    rspec TEST_REQUEST_DIR
-}
 ftext() {
     sudo find . -type f -exec grep "$1" {} +
 }

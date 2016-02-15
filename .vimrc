@@ -59,8 +59,17 @@ if has("gui_running")
     set guifont=Droid\ Sans\ Mono\ for\ Powerline:h18
 else
     "colorscheme mopkai
-    colorscheme molokai
+    "colorscheme molokai
+    "colorscheme mango
+    "colorscheme gruvbox
+    colorscheme coffee
 
+endif
+
+if exists('+colorcolumn')
+   set colorcolumn=100
+else
+    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>100v.\+', -1)
 endif
 "==================== Fixing ==================== 
 
