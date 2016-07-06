@@ -4,16 +4,17 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " Plugins
-Plugin 'gmarik/Vundle.vim' " Vundle is a must
+Plugin 'VundleVim/Vundle.vim' " Vundle is a must
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'bling/vim-airline' 
+Plugin 'easymotion/vim-easymotion'
+Plugin 'vim-airline/vim-airline' 
+Plugin 'vim-airline/vim-airline-themes' 
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'edkolev/promptline.vim' 
 Plugin 'kien/ctrlp.vim'
-Plugin 'vim-ruby/vim-ruby'
+"Plugin 'vim-ruby/vim-ruby'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'morhetz/gruvbox'
@@ -22,16 +23,18 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'godlygeek/tabular' 
-Plugin 'plasticboy/vim-markdown'
+"Plugin 'tpope/vim-rails'
+"Plugin 'plasticboy/vim-markdown'
 "Plugin 'pangloss/vim-javascript'
 "Plugin 'honza/vim-snippets'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'StanAngeloff/php.vim'
-Plugin 'othree/html5.vim'
+"Plugin 'jiangmiao/auto-pairs'
+" Plugin 'kana/vim-smartinput'
+Plugin 'Raimondi/delimitMate'
+"Plugin 'StanAngeloff/php.vim'
+"Plugin 'othree/html5.vim'
 
 call vundle#end()            " required
 
@@ -46,30 +49,31 @@ filetype indent on
 filetype plugin on				
 " yank to clipboard
 set clipboard=unnamed
+" highlight serach terms
+set hlsearch
+" show search matches as you type
+set incsearch
 
-"==================== Appearance ==================== 
+""==================== Appearance ==================== 
 
-set relativenumber " show relative line number
 set nu " show the line number 
 syntax on
 set t_Co=256
 set background=dark
 if has("gui_running")
-    colorscheme gruvbox
-    set guifont=Droid\ Sans\ Mono\ for\ Powerline:h18
+   colorscheme gruvbox
+   set guifont=Droid\ Sans\ Mono\ for\ Powerline:h18
 else
-    "colorscheme mopkai
-    "colorscheme molokai
-    "colorscheme mango
-    "colorscheme gruvbox
-    colorscheme coffee
+   "colorscheme molokai
+   "colorscheme mango
+   colorscheme gruvbox
 
 endif
 
 if exists('+colorcolumn')
-   set colorcolumn=100
+  set colorcolumn=100
 else
-    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>100v.\+', -1)
+   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>100v.\+', -1)
 endif
 "==================== Fixing ==================== 
 
@@ -84,6 +88,7 @@ vmap : :<C-u>
 set autoindent "always auto indent
 set tabstop=4 softtabstop=4 shiftwidth=4 "tab length
 set expandtab
+set copyindent
 au FileType javascript setl sw=2 sts=2 tabstop=2 et
 au FileType ruby setl tabstop=2 shiftwidth=2 softtabstop=2 et
 au FileType eruby setl tabstop=2 shiftwidth=2 softtabstop=2 et
@@ -97,30 +102,31 @@ set laststatus=2   " Always show the statusline
 set encoding=utf-8 " Necessary to show Unicode glyphs
 set term=xterm-256color
 set termencoding=utf-8
-let g:airline_theme='simple'
+let g:airline_theme='murmur'
 let g:airline_powerline_fonts=1 
+let g:airline_section_c='%F' "show file full path
 let g:airline#extensions#tmuxline#enabled=0 "disable tmuxline to let the tmuxline use its own theme
 let g:airline#extensions#tabline#enabled=1
-let g:alrline#extensions#tabline#fnamemod=1 "only show the filaname
+let g:airline#extensions#tabline#fnamemod=':t' "only show the filaname
 let g:airline#extensions#whitespace#enabled=0 "disable whitespace trailing detection
 "==================== Promptline ==================== 
 let g:promptline_preset = {
-        \'a' : [ promptline#slices#host({'only_if_ssh': 1})],
-        \'b' : [ promptline#slices#user()],
-        \'c' : [ promptline#slices#cwd({'dir_limit': 3})],
-        \'warn' : [ promptline#slices#last_exit_code()],
-        \'z' : [ promptline#slices#vcs_branch()]}
+       \'a' : [ promptline#slices#host({'only_if_ssh': 1})],
+       \'b' : [ promptline#slices#user()],
+       \'c' : [ promptline#slices#cwd({'dir_limit': 3})],
+       \'warn' : [ promptline#slices#last_exit_code()],
+       \'z' : [ promptline#slices#vcs_branch()]}
 
 "==================== Tmuxline ==================== 
 let g:tmuxline_theme = 'powerline'
 let g:tmuxline_powerline_separators=1
 let g:tmuxline_preset = {
-            \'a'    : '#S',
-            \'c'    : ['#(whoami)', '#(uptime | cud -d " " -f 1,2,3)'],
-            \'win'  : ['#I', '#W'],
-            \'cwin' : ['#I', '#W', '#F'],
-            \'x'    : '#(date)',
-            \'z'    : '#H'}
+           \'a'    : '#S',
+           \'c'    : ['#(whoami)', '#(uptime | cud -d " " -f 1,2,3)'],
+           \'win'  : ['#I', '#W'],
+           \'cwin' : ['#I', '#W', '#F'],
+           \'x'    : '#(date)',
+           \'z'    : '#H'}
 
 "==================== Key Bindings ==================== 
 " mapleader
@@ -131,11 +137,11 @@ let mapleader=","
 " view NERDTree from current open file
 :map 	<F3> 	:NERDTreeFind<CR> 
 " auto indent and jump back to current line
-:map    <F4>   gg=G<C-o><C-o>
+:map    <F4>    gg=G<C-o><C-o>
 " toggle indent guides
-:map    <F5>    :IndentGuidesToggle<CR>
+:map    <F5>    :IndentGuidesToggle<CR>:GitGutterToggle<CR>
 " toggle number
-:map    <F6>    :set nu!<CR>:set relativenumber!<CR>
+:map    <F6>    :set nu!<CR>
 " syntastic check
 :map    <F9>    :SyntasticCheck<CR>
 
@@ -169,11 +175,11 @@ let NERDTreeShowBookmarks=1
 
 "==================== Indent-Guide ====================
 let g:indent_guides_enable_on_vim_startup = 1 
-let g:indent_guides_auto_colors = 0 
-let g:indent_guides_guide_size = 1 
+let g:indent_guides_auto_colors = 1
+let g:indent_guides_guide_size = 1
 if !has("gui_running") " since Indent Guide automatically choose colors for gVim/MacVim
-    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=darkgrey ctermbg=235
-    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgrey ctermbg=238
+   autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=darkgrey ctermbg=235
+   autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgrey ctermbg=238
 endif
 
 "==================== CtrlP ==================== 
@@ -194,8 +200,8 @@ autocmd FileType ruby map <F10> :!ruby %<CR>
 "==================== Rails ==================== 
 " this is used for demo
 let g:rails_projections = {
-            \ "public/test/*.js":{"command":"js"}
-            \}
+           \ "public/test/*.js":{"command":"js"}
+           \}
 
 "==================== Cuda ==================== 
 " syntax highlight for cuda
@@ -212,20 +218,24 @@ let g:snipMate = {}
 let g:snipMate.scope_aliases = {}
 let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
 let g:snipMate.scope_aliases['cuda'] = 'cuda,cpp'
+let g:snipMate.scope_aliases['inc'] = 'php'
 
 "==================== Syntastic ==================== 
 " let g:syntastic_ruby_checkers = ['rubylint']
-let g:syntastic_php_checkers = ['phplint']
-
+ let g:syntastic_php_checkers = ['phplint']
 
 "==================== Tabular ==================== 
 nmap <Leader>ae :Tabularize /=<CR>
 vmap <Leader>ae :Tabularize /=<CR>
 nmap <Leader>ac :Tabularize /:\zs<CR> 
 vmap <Leader>ac :Tabularize /:\zs<CR>
-nmap <Leader>aa :Tabularize /=>\zs<CR> 
-vmap <Leader>aa :Tabularize /=>\zs<CR>
+nmap <Leader>aa :Tabularize /=><CR> 
+vmap <Leader>aa :Tabularize /=><CR>
 
 "==================== Auto-Paris ==================== 
 let g:AutoPairsMapBS=0
+let g:AutoPairsMultilineClose=0
 
+"==================== GitGutter =====================
+let g:gitgutter_realtime = 0 "trade accuracy for speed
+let g:gitgutter_eager = 0 "trade accuracy for speed

@@ -10,8 +10,8 @@
 !.promptline_themes/*
 !.tmuxline_themes/
 !.tmuxline_themes/*
-!.dotfiles_scripts/
-!.dotfiles_scripts/*
+!dotfiles_scripts/
+!dotfiles_scripts/*
 !.zsh-git-prompt/
 !.zsh-git-prompt/*
 !.zsh-git-prompt/src/

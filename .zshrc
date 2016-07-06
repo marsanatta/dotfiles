@@ -7,7 +7,9 @@ export PATH
 export ZSH=$HOME/.oh-my-zsh # Path to your oh-my-zsh installation.
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-# ========== Problem Fix ===========
+export PATH=$PATH:/usr/local/apache-maven-3.3.9/bin
+export JAVA_HOME=/usr/java/jdk1.8.0_73
+#========== Problem Fix ===========
 stty -ixon
 export LANG="en_US.UTF-8"
 # ========== Alias ==========
@@ -20,8 +22,29 @@ alias catsc='sh ~/catsc.sh'
 alias lcache="logcat -f  /home/y/logs/trafficserver/squid.blog"
 alias aerr='sudo tail -f /home/y/logs/yapache/error'  
 alias ssh='ssh -X -C'
-alias glg2="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''        %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
+alias glg2="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''        %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'"
+alias gfr="git fetch upstream;git rebase upstream/master"
 # =========== Functions ===========
+export TEST_CONTROLLER_DIR="/home/marshall.hung/workspace/HomeSecurity_BEs/be_news/spec/controllers"
+export TEST_MODEL_DIR="/home/marshall.hung/workspace/HomeSecurity_BEs/be_news/spec/models"
+export TEST_REQUEST_DIR="/home/marshall.hung/workspace/HomeSecurity_BEs/be_news/spec/requests"
+gacp() {
+    git add .
+    git commit -m "$1"
+    ggpush
+}
+gpct() {
+    ggpull
+    rspec TEST_CONTROLLER_DIR
+}
+gpmt() {
+    ggpull
+    rspec TEST_MODEL_DIR
+}
+gprt() {
+    ggpull
+    rspec TEST_REQUEST_DIR
+}
 ftext() {
     sudo find . -type f -exec grep "$1" {} +
 }
