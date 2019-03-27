@@ -48,7 +48,9 @@ filetype indent on
 " Enable filetype-specific plugins
 filetype plugin on				
 " yank to clipboard
-set clipboard=unnamed
+if $TMUX== ''
+    set clipboard=unnamed
+endif
 " highlight serach terms
 set hlsearch
 " show search matches as you type
@@ -64,9 +66,9 @@ if has("gui_running")
    colorscheme gruvbox
    set guifont=Droid\ Sans\ Mono\ for\ Powerline:h18
 else
-   "colorscheme molokai
+   colorscheme molokai
    "colorscheme mango
-   colorscheme gruvbox
+   "colorscheme gruvbox
 
 endif
 
@@ -83,18 +85,19 @@ set backspace=indent,eol,start
 set timeout timeoutlen=315 ttimeoutlen=180
 " fix '<,'>
 vmap : :<C-u>
+" display big5
+set fileencodings=utf8,big5,gbk,latin1
+set fileencoding=utf8
 
 "==================== Indent ==================== 
 set autoindent "always auto indent
 set tabstop=4 softtabstop=4 shiftwidth=4 "tab length
 set expandtab
-set copyindent
+"set copyindent
 au FileType javascript setl sw=2 sts=2 tabstop=2 et
 au FileType ruby setl tabstop=2 shiftwidth=2 softtabstop=2 et
 au FileType eruby setl tabstop=2 shiftwidth=2 softtabstop=2 et
-au FileType html setl tabstop=2 shiftwidth=2 softtabstop=2 et
 au FileType css setl tabstop=2 shiftwidth=2 softtabstop=2 et
-au FileType php setl tabstop=4 shiftwidth=4 softtabstop=4 et
 au FileType yaml setl tabstop=2 shiftwidth=2 softtabstop=2 et
 
 "==================== Airline ==================== 
@@ -102,7 +105,7 @@ set laststatus=2   " Always show the statusline
 set encoding=utf-8 " Necessary to show Unicode glyphs
 set term=xterm-256color
 set termencoding=utf-8
-let g:airline_theme='murmur'
+let g:airline_theme='badwolf'
 let g:airline_powerline_fonts=1 
 let g:airline_section_c='%F' "show file full path
 let g:airline#extensions#tmuxline#enabled=0 "disable tmuxline to let the tmuxline use its own theme
@@ -223,6 +226,9 @@ let g:snipMate.scope_aliases['inc'] = 'php'
 "==================== Syntastic ==================== 
 " let g:syntastic_ruby_checkers = ['rubylint']
  let g:syntastic_php_checkers = ['phplint']
+ let g:syntastic_mode_map = {
+     \ "mode": "active",
+     \ "passive_filetypes": ["java"] }
 
 "==================== Tabular ==================== 
 nmap <Leader>ae :Tabularize /=<CR>
@@ -239,3 +245,8 @@ let g:AutoPairsMultilineClose=0
 "==================== GitGutter =====================
 let g:gitgutter_realtime = 0 "trade accuracy for speed
 let g:gitgutter_eager = 0 "trade accuracy for speed
+
+if $VIM_CRONTAB == "true"
+    set nobackup
+    set nowritebackup
+endif
