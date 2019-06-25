@@ -12,13 +12,12 @@ sudo apt-get install vim
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 # zsh  
 sudo apt-get install zsh
-# autojump
-sudo apt-get install autojump
 # oh-my-zsh
-curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+sh -c "$(wget -O- https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 # zsh-syntax-highlighting
-cd ~/.oh-my-zsh/custom/plugins
-git clone git://github.com/zsh-users/zsh-syntax-highlighting.git
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+# autojump
+git clone git://github.com/wting/autojump.git && cd autojump && ./install.py
 # setup dotfiles
 cp {../.vimrc,../.zshrc,../.gitignore} ~
 cp -r {../.promptline_themes,../.zsh-git-prompt} ~
