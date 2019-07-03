@@ -125,11 +125,10 @@ rs() {
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git autojump zsh-syntax-highlighting mvn)
+plugins=(git zsh-syntax-highlighting mvn fzf)
 
 # User configuration
 
-source ~/.promptline_themes/promptline_goldenline.sh
 source $ZSH/oh-my-zsh.sh
 # source /usr/local/share/autojump/autojump.zsh 
 
@@ -159,6 +158,19 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 #
-source ~/.zsh-git-prompt/zshrc.sh
+# Set fzf installation directory path
+export FZF_BASE=$HOME/.fzf
+
+# Uncomment the following line to disable fuzzy completion
+# export DISABLE_FZF_AUTO_COMPLETION="true"
+
+# Uncomment the following line to disable key bindings (CTRL-T, CTRL-R, ALT-C)
+# export DISABLE_FZF_KEY_BINDINGS="true"
+source $HOME/.promptline_themes/promptline_goldenline.sh
+source $HOME/.zsh-git-prompt/zshrc.sh
+#source $ZSH/plugins/incr/incr-0.2.zsh
 
 export SSH_AUTH_SOCK=/Users/wshung/.yubiagent/sock
+[[ -s /home/wshung/.autojump/etc/profile.d/autojump.sh ]] && source /home/wshung/.autojump/etc/profile.d/autojump.sh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

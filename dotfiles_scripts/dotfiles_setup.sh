@@ -4,6 +4,10 @@
 # setup vim ,zsh and other plugins from scratch
 #
 
+# setup dotfiles
+cp {../.vimrc,../.zshrc,../.gitignore} ~
+cp -r {../.promptline_themes,../.zsh-git-prompt} ~
+
 # vim
 sudo add-apt-repository ppa:fcwu-tw/ppa # for Vim 7.4
 sudo apt-get update
@@ -16,11 +20,10 @@ sudo apt-get install zsh
 sh -c "$(wget -O- https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 # zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+# fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
 # autojump
-git clone git://github.com/wting/autojump.git && cd autojump && ./install.py
-# setup dotfiles
-cp {../.vimrc,../.zshrc,../.gitignore} ~
-cp -r {../.promptline_themes,../.zsh-git-prompt} ~
+git clone git://github.com/wting/autojump.git ~/autojump && ~/autojump/install.py
 # [vim] install plugins
 vim +PluginInstall +qall
 # [vim] copy snippets in repo:vim-snippets into plugin:vim-snipmate
